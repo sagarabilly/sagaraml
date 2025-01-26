@@ -1,5 +1,5 @@
 
-# Model Composer (Machine Learnbing Analysis)
+# ML Model Composer (Machine Learning Analysis)
 
 This repository contains a Python-based machine learning model composer that allows users to create, train, and evaluate various machine learning models on their inputted dataset. 
 Contains 2 CLI-executable code [compose.py and predict.py] and 1 small separate lib code [nn_method.py].
