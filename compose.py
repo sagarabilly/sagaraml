@@ -38,8 +38,6 @@ from rich.progress import Progress
 import gc
 from argparse import ArgumentParser
 
-# outside lib
-os.chdir(r"F:\MDAS")
 from nn_method import (
     convert_tensor, prepare_sequences, batching,
     RNNRegressor, FNNRegressor,
