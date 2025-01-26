@@ -2,9 +2,9 @@
 # Machine Learning Model Composer
 
 This repository contains a Python-based machine learning model composer that allows users to create, train, and evaluate various machine learning models on their inputted tabular dataset. <br>
-Contains 2 CLI-executable code [compose.py and predict.py] and 1 small separate lib code [nn_method.py]. <br>
+<br>Contains 2 CLI-executable code [compose.py and predict.py] and 1 small separate lib code [nn_method.py]. <br>
 The compose.py provides flexibility to choose between different algorithms, perform dimensionality reduction, visualize the data, and save the generated model. <br>
-The script also supports neural networks for modern machine learning techniques. <br>
+<br>The script also supports neural networks for modern machine learning techniques. <br>
 While predict.py will generate a prediction based on the inputted data and the choosen model that has been created. 
 
 ## Features
