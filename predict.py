@@ -5,7 +5,7 @@ import joblib
 import lightgbm as lgb
 import torch
 import numpy as np
-from nn_method import nn_predict  # Import your nn_predict function
+from nn_method import nn_predict
 
 def main(args):
     data = pd.read_csv(args.data)
@@ -38,7 +38,6 @@ def main(args):
     else:
         raise ValueError("Unsupported model format. Please provide a .txt, .pkl, or .pth file.")
 
-    # Fill in the predictions in the target column
     data[args.target] = predictions
 
     # Save the result to a new CSV file
