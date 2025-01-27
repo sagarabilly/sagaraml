@@ -46,17 +46,10 @@ from nn_method import (
 #-----------------------------------------------------------------------
 
 def visual_inspect(df):
-    #merging 2 categorical parameters, ONLY FOR VISUAL INSPECTIONS 
-    df['cgroup'] = df["f4g_fmdg_mdgen"].astype(str) + "-" + df["f4g_fmds_mdf"].astype(str)
-    df['cgroup'] = df['cgroup'].astype('category')
-    
     #visualizatons
     sns.set_theme(rc={'figure.figsize':(80,80)})
     visualization_features = list(df.columns)
-    visualization_features.remove("f4g_fmds_mdf")
-    visualization_features.remove("f4g_fmdg_mdgen")
-    
-    inspect_pplot = sns.pairplot(df[visualization_features], hue="cgroup", palette="viridis", plot_kws={"s": 3})
+    inspect_pplot = sns.pairplot(df[visualization_features], palette="viridis", plot_kws={"s": 3})
     plt.show()
     return visualization_features
 
