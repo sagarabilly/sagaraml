@@ -2,7 +2,7 @@
 '''
 ---------COMPOSE---------
 Machine Learning Analysis
-Version 1.0 Unstable
+Version 2.0 Unstable
 sagara_billy
 -------------------------
 '''
@@ -27,6 +27,7 @@ from sklearn.metrics import (r2_score,
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import KFold, train_test_split
 import joblib
+import torch
 
 import lightgbm as lgbm
 
@@ -38,6 +39,8 @@ from rich.progress import Progress
 import gc
 from argparse import ArgumentParser
 
+# outside lib
+os.chdir(r"F:\MDAS")
 from nn_method import (
     convert_tensor, prepare_sequences, batching,
     RNNRegressor, FNNRegressor,
@@ -46,10 +49,17 @@ from nn_method import (
 #-----------------------------------------------------------------------
 
 def visual_inspect(df):
+    #merging 2 categorical parameters, ONLY FOR VISUAL INSPECTIONS 
+    df['cgroup'] = df["f4g_fmdg_mdgen"].astype(str) + "-" + df["f4g_fmds_mdf"].astype(str)
+    df['cgroup'] = df['cgroup'].astype('category')
+    
     #visualizatons
     sns.set_theme(rc={'figure.figsize':(80,80)})
     visualization_features = list(df.columns)
-    inspect_pplot = sns.pairplot(df[visualization_features], palette="viridis", plot_kws={"s": 3})
+    visualization_features.remove("f4g_fmds_mdf")
+    visualization_features.remove("f4g_fmdg_mdgen")
+    
+    inspect_pplot = sns.pairplot(df[visualization_features], hue="cgroup", palette="viridis", plot_kws={"s": 3})
     plt.show()
     return visualization_features
 
@@ -185,6 +195,8 @@ def main(algorithm:str, modern_ml=False, save_mod=True, visual=False, dimred=Fal
         algorithm = 'fnn'
         crossval = "tts"
         
+        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        
         #Model selections (Define Param & Initialize)
         if algorithm == 'rnn':
             print('Selected Model RNN')
@@ -195,16 +207,21 @@ def main(algorithm:str, modern_ml=False, save_mod=True, visual=False, dimred=Fal
             #Sequencing 
             seq_len = 100
             X_pca, y = prepare_sequences(X_pca, y, seq_len)
+            use_rnn = True
             
         elif algorithm == 'fnn':
             print('Selected Model FNN')
             model = FNNRegressor(input_size=len(pca_init.explained_variance_ratio_), 
                                   hidden_sizes=[64, 32], 
-                                  output_size=1)
+                                  output_size=1,
+                                  learning_rate=0.005)
+            use_rnn = False
             
         else:
             print("Model Not Selected. Error")
-            
+           
+        model = model.to(device)
+        
         print("Model-Making and Fitting Execution...")
         
         if crossval == "kfold" :
@@ -216,17 +233,17 @@ def main(algorithm:str, modern_ml=False, save_mod=True, visual=False, dimred=Fal
                     y_train, y_test = y[train_index], y[test_index]
                     
                     print('Convert to tensor...')
-                    X_train_tensor, X_test_tensor, y_train_tensor, y_test_tensor = convert_tensor(X_train, X_test, y_train, y_test)
+                    X_train_tensor, X_test_tensor, y_train_tensor, y_test_tensor = convert_tensor(X_train, X_test, y_train, y_test, use_rnn=use_rnn, device=device)
                     
                     print('Batching and using Data Loader')
                     train_loader = batching(X_train_tensor, y_train_tensor, batch_size)
                     test_loader = batching(X_test_tensor, y_test_tensor, batch_size)
                     
                     print('Training Model...')
-                    trained_model = nn_train(num_epochs, model, train_loader)
+                    trained_model = nn_train(num_epochs, model, train_loader, val_loader=None, device=device)
                     
                     print('Predicting...')
-                    y_pred = nn_predict(trained_model, test_loader)
+                    y_pred = nn_predict(trained_model, test_loader, device=device)
                     
                     # Calculate and store the accuracy
                     r2.append(r2_score(y_test, y_pred))
@@ -241,17 +258,17 @@ def main(algorithm:str, modern_ml=False, save_mod=True, visual=False, dimred=Fal
             X_train, X_test, y_train, y_test = train_test_split(X_pca, y, test_size=0.2, random_state=529)
             
             print('Convert to tensor...')
-            X_train_tensor, X_test_tensor, y_train_tensor, y_test_tensor = convert_tensor(X_train, X_test, y_train, y_test)
+            X_train_tensor, X_test_tensor, y_train_tensor, y_test_tensor = convert_tensor(X_train, X_test, y_train, y_test, use_rnn=use_rnn, device=device)
             
             print('Batching and using Data Loader')
             train_loader = batching(X_train_tensor, y_train_tensor, batch_size)
             test_loader = batching(X_test_tensor, y_test_tensor, batch_size)
             
             print('Training Model...')
-            trained_model = nn_train(num_epochs, model, train_loader)
+            trained_model = nn_train(num_epochs, model, train_loader, val_loader=None, device=device)
             
             print('Predicting...')
-            y_pred = nn_predict(trained_model, test_loader)
+            y_pred = nn_predict(trained_model, test_loader, device=device)
             
             # Calculate and store the accuracy
             r2.append(r2_score(y_test, y_pred))
