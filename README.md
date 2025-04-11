@@ -35,7 +35,7 @@ While predict.py will generate a prediction based on the inputted data and the c
   - `tensorflow` (for neural network models)
   - `torch` (for neural network models)
   - `gc` (Garbage Collection)
-  - `progress` (for progress bar)
+  - `rich` (for progress bar)
   - `numpy`
 
 You can install the required libraries using pip:
