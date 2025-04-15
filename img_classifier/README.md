@@ -21,9 +21,9 @@ Please adjust the parameter and the data path in the img_classifier_config.py`.
 To use it, you can execute it from the terminal.   
 The main script supports the following command-line options:  
 
---compose: Train a new model from scratch.  
---load MODEL_PATH: Load an existing model (provide the model file path).  
---target IMAGE_PATH: Provide an image file path for prediction (used with --load).  
+```--compose```: Train a new model from scratch.  
+```--load MODEL_PATH```: Load an existing model (provide the model file path).  
+```--target IMAGE_PATH```: Provide an image file path for prediction (used with --load).  
 
 To compose and train a new model, run:  
 ```bash
