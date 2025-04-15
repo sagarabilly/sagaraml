@@ -33,7 +33,7 @@ import gc
 from argparse import ArgumentParser
 
 # outside lib
-os.chdir(r"D:\tpml")
+#os.chdir(r"D:\sagaraml\tpml") #in case you need to add project directory
 from nn_method import (
     convert_tensor, prepare_sequences, batching,
     RNNRegressor, FNNRegressor,
