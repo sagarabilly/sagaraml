@@ -1,7 +1,7 @@
 import os
 from torchvision import transforms
 
-BASE_DATA_PATH = r"D:\datasetbank\food_13\data"
+BASE_DATA_PATH = r"D:\datasetbank\data"
 TRAIN_PATH = os.path.join(BASE_DATA_PATH, "train")
 VALID_PATH = os.path.join(BASE_DATA_PATH, "val")
 TEST_PATH = os.path.join(BASE_DATA_PATH, "test")
