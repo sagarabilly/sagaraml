@@ -33,7 +33,7 @@ import gc
 from argparse import ArgumentParser
 
 # outside lib
-os.chdir(r"F:\MDAS")
+os.chdir(r"D:\tpml")
 from nn_method import (
     convert_tensor, prepare_sequences, batching,
     RNNRegressor, FNNRegressor,
