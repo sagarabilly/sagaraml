@@ -3,7 +3,6 @@
 ---------COMPOSE---------
 Machine Learning Analysis
 Version 2.0 Unstable
-sagara_billy
 -------------------------
 '''
 
