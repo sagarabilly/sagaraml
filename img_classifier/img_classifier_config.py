@@ -23,6 +23,7 @@ LEARNING_RATE = 0.003
 NUM_EPOCH = 4
 
 MODEL_TYPE = "M_EFNETB0"
-#Available model : M_EFNETB0, RESNET18, CNN_MOD
+# Available model : M_EFNETB0, RESNET18, CNN_MOD
 
 NUM_CLASSES = None
+# Set by default to use len(train_dataset.classes) 
