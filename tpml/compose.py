@@ -1,4 +1,8 @@
 #Python 3.11.5 : UTF-08
+"""
+-------Compose-------
+Version 2.0 Unstable
+"""
 
 #Data Structure
 import pandas as pd
