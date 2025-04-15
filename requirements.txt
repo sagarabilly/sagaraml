@@ -3,8 +3,12 @@ numpy
 matplotlib
 seaborn
 scikit-learn
+pillow
+timm
 lightgbm
 joblib
 rich
 torch
+torchvision
+torchinfo
 tqdm

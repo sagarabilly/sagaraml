@@ -1,59 +1,28 @@
+# SagaraML
 
-# Simple Machine Learning Model Composer
+A collection of simple machine learning / deep learning code in the focus of simplicity and ease of use.
+Most of them are built using the PyTorch framework and are designed to be executed via commannd line terminal for both training and inference.
+You could also use it as a starting template for your code. 
 
-This repository contains a Python-based machine learning model composer that allows users to create, train, and evaluate various machine learning models on their inputted tabular dataset. <br>
-<br>Contains 2 CLI-executable code [compose.py and predict.py] and 1 small separate lib code [nn_method.py]. <br>
-The compose.py provides flexibility to choose between different algorithms, perform dimensionality reduction, visualize the data, and save the generated model. <br>
-<br>The script also supports neural networks for modern machine learning techniques. <br>
-While predict.py will generate a prediction based on the inputted data and the choosen model that has been created. 
+## Fatures
 
-## Features
+As of right now, it includes 3 application features:  
+- **img_classifier** Image classification with 3 sample architectures: Efficientnet B0, Resnet18, Simple CNN.  
+- **SR_UNET**: Residual Unet2D (ResUNet2D) model architecture for medical or microscopic image segmentation.  
+- **TPML**: Traditional Predictive Machine Learning, predictive model using traditional machine learning method designed for tabular dataset. Includes KFold cross-validation and models such as LGBM Regressor and more.  
 
-- **Dataset Input**: Supports CSV, Excel, or Pickle format datasets.
-- **Model Selection**:
-  - LightGBM Regressor
-  - Linear Regression
-  - SGD Regressor
-  - Feedforward Neural Network (FNN)
-  - Recurrent Neural Network (RNN)
-- **Data Visualization**: Option to visualize the dataset using seaborn's pairplot.
-- **Dimensionality Reduction**: Option to apply PCA (Principal Component Analysis).
-- **Cross-Validation**: Supports K-Fold cross-validation and Train-Test Split.
-- **Model Saving**: Automatically saves the trained model for future use.
-- **Metrics**: Computes various performance metrics such as R², MSE, MAE, MAPE, and RMSE.
-- **Prediction**: Create a Prediction based on the inputted data, designated target parameter, choosen model, and batching options.
+## Usage and Requirements
 
-## Requirements
+1. Most of them have a seperate configuration file that you could adjust and modify.    
+2. Make sure you have installed the required libraries and adjust the version based on your current installed cuda GPU. (read more at [PyTorch](https://pytorch.org/))  
+3. For how to use it, please check each of the separate README.md file.   
 
-- Python 3.x
-- Required libraries:
-  - `scikit-learn`
-  - `pandas`
-  - `seaborn`
-  - `matplotlib`
-  - `lightgbm`
-  - `tensorflow` (for neural network models)
-  - `torch` (for neural network models)
-  - `rich` (for progress bar)
-  - `numpy`
+Clone this repository by:
+```bash
+git clone https://github.com/sagarabilly/sagaraml.git
+```
 
-You can install the required libraries using pip:
-```pip install -r requirements.txt```
+## Contributions
 
-## Use Case Example
+As always, contributions, improvements, and bug fixes are welcome.  
 
-1. Run with LightGBM Regressor and save the model:<br>
-```python compose.py -p /path/to/dataset.csv -t target_column --lgbm -s```
-
-2. Run with Linear Regression and visualize data:<br>
-```python compose.py -p /path/to/dataset.csv -t target_column --linear --visualize```
-
-3. Run with Feedforward Neural Network with PCA and save model:<br>
-```python compose.py -p /path/to/dataset.csv -t target_column --fnn --pca -s```
-
-4. Run with Recurrent Neural Network (RNN):<br>
-```python compose.py -p /path/to/dataset.csv -t target_column --rnn```
-
-5. Make Prediction:<br>
-```python predict.py -d /path/to/dataset.csv -t target_column -m /path/to/trained/model```
- 
