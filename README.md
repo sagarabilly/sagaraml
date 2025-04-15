@@ -6,7 +6,7 @@ You could also use it as a starting template for your code.
 
 ## Fatures
 
-As of right now, it includes 3 application features:  
+As of right now, it only includes 3 application features:  
 - **img_classifier** Image classification with 3 sample architectures: Efficientnet B0, Resnet18, Simple CNN.  
 - **SR_UNET**: Residual Unet2D (ResUNet2D) model architecture for medical or microscopic image segmentation.  
 - **TPML**: Traditional Predictive Machine Learning, predictive model using traditional machine learning method designed for tabular dataset. Includes KFold cross-validation and models such as LGBM Regressor and more.  
