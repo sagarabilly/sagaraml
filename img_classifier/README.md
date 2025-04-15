@@ -36,6 +36,6 @@ python main.py --load model.pth --target path/to/your/image.jpg
 ```
 This command will load the saved model, preprocess the image using the transforms, Output and visualize the predicted class probabilities.  
 
-##Contributions  
+## Contributions  
 As always, contributions, improvements, and bug fixes are welcome.  
 
