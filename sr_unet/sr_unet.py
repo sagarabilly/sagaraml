@@ -51,9 +51,7 @@ def data_split(df):
     train_df, test_df = train_test_split(df, test_size=0.2, random_state=42)
     return train_df, test_df
 
-
 # Helper function to load data from a folder.
-# Assumes the folder structure:
 # <folder>/
 #   ├── images/   --> input images
 #   └── masks/    --> corresponding segmentation masks
