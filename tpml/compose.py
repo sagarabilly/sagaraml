@@ -1,10 +1,4 @@
 #Python 3.11.5 : UTF-08
-'''
----------COMPOSE---------
-Machine Learning Analysis
-Version 2.0 Unstable
--------------------------
-'''
 
 #Data Structure
 import pandas as pd
