@@ -19,7 +19,7 @@ Please always make sure you have installed the required libraries.
 Please adjust the parameter and the data path in the img_classifier_config.py`.  
 
 To use it, you can execute it from the terminal.   
-The main script supports the following command-line options:  
+The main script (img_classifier.py) supports the following command-line options:  
 
 ```--compose```: Train a new model from scratch.  
 ```--load MODEL_PATH```: Load an existing model (provide the model file path).  
@@ -27,12 +27,12 @@ The main script supports the following command-line options:
 
 To compose and train a new model, run:  
 ```bash
-python main.py --compose
+python img_classifier.py --compose
 ```
 
 If you already have a trained model via ```--compose```, you can load the model and predict the class of a target image.   
 ```bash
-python main.py --load model.pth --target path/to/your/image.jpg
+python img_classifier.py --load model.pth --target path/to/your/image.jpg
 ```
 This command will load the saved model, preprocess the image using the transforms, Output and visualize the predicted class probabilities.  
 
