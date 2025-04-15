@@ -17,6 +17,8 @@ As of right now, it only includes 3 application features:
 2. Make sure you have installed the required libraries and adjust the version based on your current installed cuda GPU. (read more at [PyTorch](https://pytorch.org/))  
 3. For how to use it, please check each of the separate README.md file.   
 
+I apologize if the code formatting looks a little bit weird since I use black for python auto-formatting.  
+
 Clone this repository by:
 ```bash
 git clone https://github.com/sagarabilly/sagaraml.git
