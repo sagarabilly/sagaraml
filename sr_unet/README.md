@@ -54,7 +54,7 @@ For running a previously trained model for segmentation on a new image:
 python sr_unet.py --load path/to/model.pth --target path/to/test/image.jpg
 ```
 
-##Contributions  
+## Contributions  
 As always, contributions, improvements, and bug fixes are welcome.  
 
 
