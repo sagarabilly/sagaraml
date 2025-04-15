@@ -66,15 +66,13 @@ def load_data_from_folder(data_folder):
 
     image_files = sorted(
         [
-            f
-            for f in os.listdir(images_folder)
+            f for f in os.listdir(images_folder)
             if f.lower().endswith((".png", ".jpg", ".jpeg"))
         ]
     )
     mask_files = sorted(
         [
-            f
-            for f in os.listdir(masks_folder)
+            f for f in os.listdir(masks_folder)
             if f.lower().endswith((".png", ".jpg", ".jpeg"))
         ]
     )
