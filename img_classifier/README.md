@@ -3,7 +3,7 @@
 A sinple image classifier using pytorch with 3 sample architectures:  
 - **M_EFNETB0** – based on EfficientNet-B0 (using `timm`)  
 - **RESNET18** – from torchvision deep residual learning   
-- **CNN_MOD** – a simple Convolutional Neural Network (added just for you to try or modify)  
+- **CNN_MOD** – a simple Convolutional Neural Network (just for you to try or modify)  
 
 It is currently using Pytorch ImageFolder for folder structure.    
 The configuration parameters are separated in the `img_classifier_config.py` file, and the main code is executable through the terminal using `argparse`.     
